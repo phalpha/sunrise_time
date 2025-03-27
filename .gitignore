@@ -1,3 +1,4 @@
 .env
 *.env
 agency_stats.csv
+agency_stats.csv.zip
