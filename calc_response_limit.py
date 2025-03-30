@@ -4,7 +4,7 @@ import pandas as pd
 access_token = NULL
 
 API_URL = "https://router.huggingface.co/hf-inference/models/google/tapas-base-finetuned-wtq"
-headers = {"Authorization": "Bearer " + access_token}
+headers = {"Authorization": LLM_API_TOKEN}
 
 def query(payload):
 	response = requests.post(API_URL, headers=headers, json=payload)
