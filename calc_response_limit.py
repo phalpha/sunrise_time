@@ -1,8 +1,6 @@
 import requests
 import pandas as pd
 
-access_token = NULL
-
 API_URL = "https://router.huggingface.co/hf-inference/models/google/tapas-base-finetuned-wtq"
 headers = {"Authorization": LLM_API_TOKEN}
 
@@ -31,7 +29,7 @@ payload = {
 }
 
 output = query(payload)				#query llm
-print output
+print(output)
 response_times = json_to_dict(output)
 
 
