@@ -48,9 +48,9 @@ for i in range(len):
 	elif parent in response_times:
 		df.loc[i, 'response time policy'] = response_times[parent]
 	else:
-		print("Could not find state")
+		print("Could not find state" + i)
 
-df.to_csv('agency_stats.csv', index=False)
+df.to_csv('agency_stats_updated.csv', index=False)
 
 
 
