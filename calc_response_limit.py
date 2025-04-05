@@ -1,23 +1,28 @@
 import requests
 import pandas as pd
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-API_URL = "https://router.huggingface.co/hf-inference/models/google/tapas-base-finetuned-wtq"
-headers = {"Authorization": LLM_API_TOKEN}
+token = os.getenv('LLM_API_TOKEN')
+
+API_URL = "https://api-inference.huggingface.co/models/google/flan-t5-large"
+headers = {"Authorization": token}
 
 def query(payload):
 	response = requests.post(API_URL, headers=headers, json=payload)
 	return response.json()
 
 def json_to_dict(output):
-	return {}			# format llm response into dict; 
+	return {}			# format llm response into dict;
 
 states = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
-	  "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", 
+	  "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois",
 	  "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland",
 	  "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana",
 	  "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York",
 	  "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania",
-	  "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", 
+	  "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah",
 	  "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming",
 	  "United States of America"]
 
@@ -30,8 +35,9 @@ payload = {
 
 output = query(payload)				#query llm
 print(output)
-response_times = json_to_dict(output)
 
+'''
+response_times = json_to_dict(output)
 
 df = pd.read_csv('agency_stats.csv')
 df['response time policy'] = ''
@@ -51,4 +57,4 @@ for i in range(len):
 df.to_csv('agency_stats_updated.csv', index=False)
 
 
-
+'''
